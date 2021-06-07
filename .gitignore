@@ -24,6 +24,3 @@ hs_err_pid*
 
 # Ignore Maven project-specific cache directory
 target
-
-# Ignore Gradle build output directory
-build
