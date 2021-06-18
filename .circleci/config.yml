@@ -77,8 +77,7 @@ jobs:
           command: docker tag dangomango2/siamese dangomango2/siamese:$CIRCLE_BRANCH
       - run:
           command: docker tag dangomango2/siamese dangomango2/siamese:$CIRCLE_TAG
-          when:
-            condition: $CIRCLE_TAG
+          when: $CIRCLE_TAG
 workflows:
   version: 2
   ci:
