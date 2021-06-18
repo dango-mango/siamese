@@ -26,6 +26,9 @@ jobs:
       - run: gradle spotlessCheck
       - persist_to_workspace:
           root: .
+          paths:
+            - build/*
+            - .gradle/*
   test:
     docker:
       - image: circleci/openjdk:11-jdk-buster
