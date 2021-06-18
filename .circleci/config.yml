@@ -65,6 +65,7 @@ jobs:
       TERM: dumb
     steps:
       - setup_remote_docker
+      - run: echo ${DOCKERHUB_ACCESS_TOKEN} | docker login --username ${DOCKERHUB_USERNAME} --password-stdin
       - checkout
       - restore_cache:
           keys:
@@ -95,6 +96,8 @@ workflows:
             tags:
               ignore: /.*/
       - publish:
+          context:
+            - dockerhub
           requires:
             - test
           filters:
