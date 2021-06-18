@@ -75,9 +75,10 @@ jobs:
       - run: gradle bootBuildImage
       - run:
           command: docker tag dangomango2/siamese dangomango2/siamese:$CIRCLE_BRANCH
-      - when:
-          condition: $CIRCLE_TAG
+      - run:
           command: docker tag dangomango2/siamese dangomango2/siamese:$CIRCLE_TAG
+          when:
+            condition: $CIRCLE_TAG
 workflows:
   version: 2
   ci:
