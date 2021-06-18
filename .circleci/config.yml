@@ -87,17 +87,17 @@ jobs:
           command: gradle bootBuildImage
       - run:
           name: Docker image publish (branch version)
-          command:
-            - docker tag dangomango2/siamese dangomango2/siamese:${CIRCLE_BRANCH}
-            - docker image push dangomango2/siamese:${CIRCLE_BRANCH}
+          command: |
+            docker tag dangomango2/siamese dangomango2/siamese:${CIRCLE_BRANCH}
+            docker image push dangomango2/siamese:${CIRCLE_BRANCH}
       - when:
           condition: << pipeline.git.tag >>
           steps:
             - run:
                 name: Docker image publish (tag version)
-                command:
-                  - docker tag dangomango2/siamese dangomango2/siamese:${CIRCLE_TAG}
-                  - docker image push dangomango2/siamese:${CIRCLE_TAG}
+                command: |
+                  docker tag dangomango2/siamese dangomango2/siamese:${CIRCLE_TAG}
+                  docker image push dangomango2/siamese:${CIRCLE_TAG}
 workflows:
   version: 2
   ci:
