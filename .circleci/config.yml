@@ -64,6 +64,11 @@ jobs:
             - v1-dependencies-{{ checksum "build.gradle" }}
             - v1-dependencies-
       - run: gradle bootBuildImage
+      - run:
+          command: docker tag dangomango2/siamese dangomango2/siamese:$CIRCLE_BRANCH
+      - when:
+          condition: $CIRCLE_TAG
+          command: docker tag dangomango2/siamese dangomango2/siamese:$CIRCLE_TAG
 workflows:
   version: 2
   ci:
@@ -71,13 +76,13 @@ workflows:
       - build:
           filters:
             tags:
-              only: /.*/
+              ignore: /.*/
       - test:
           requires:
             - build
           filters:
             tags:
-              only: /.*/
+              ignore: /.*/
       - publish:
           requires:
             - test
