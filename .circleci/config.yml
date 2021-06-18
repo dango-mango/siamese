@@ -24,6 +24,11 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
       - run: gradle compileJava compileTestJava
       - run: gradle spotlessCheck
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build/*
+            - .gradle/*
   test:
     docker:
       - image: circleci/openjdk:11-jdk-buster
@@ -37,6 +42,8 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
             - v1-dependencies-
+      - attach_workspace:
+          at: .
       - run: gradle test
       - run:
           name: Save test results
@@ -63,6 +70,8 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
             - v1-dependencies-
+      - attach_workspace:
+          at: .
       - run: gradle bootBuildImage
       - run:
           command: docker tag dangomango2/siamese dangomango2/siamese:$CIRCLE_BRANCH
