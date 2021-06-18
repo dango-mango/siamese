@@ -37,6 +37,7 @@ jobs:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
     steps:
+      - checkout
       - attach_workspace:
           at: .
       - restore_cache:
@@ -63,6 +64,7 @@ jobs:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
     steps:
+      - checkout
       - attach_workspace:
           at: .
       - restore_cache:
