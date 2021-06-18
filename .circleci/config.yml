@@ -73,11 +73,11 @@ jobs:
       - attach_workspace:
           at: .
       - run: gradle bootBuildImage
-      - run: docker tag dangomango2/siamese dangomango2/siamese:$CIRCLE_BRANCH
+      - run: docker tag dangomango2/siamese dangomango2/siamese:${CIRCLE_BRANCH}
       - when:
-          condition: $CIRCLE_TAG
+          condition: ${CIRCLE_TAG}
           steps:
-            - run: docker tag dangomango2/siamese dangomango2/siamese:$CIRCLE_TAG
+            - run: docker tag dangomango2/siamese dangomango2/siamese:${CIRCLE_TAG}
 workflows:
   version: 2
   ci:
