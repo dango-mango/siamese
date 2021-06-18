@@ -75,7 +75,7 @@ jobs:
       - run: gradle bootBuildImage
       - run: docker tag dangomango2/siamese dangomango2/siamese:${CIRCLE_BRANCH}
       - when:
-          condition: ${CIRCLE_TAG}
+          condition: << pipeline.git.tag >>
           steps:
             - run: docker tag dangomango2/siamese dangomango2/siamese:${CIRCLE_TAG}
 workflows:
