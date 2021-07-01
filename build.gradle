@@ -45,3 +45,7 @@ spotless {
         googleJavaFormat()
     }
 }
+
+bootBuildImage {
+    imageName = "dangomango2/${project.name}"
+}

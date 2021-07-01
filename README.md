@@ -1,4 +1,7 @@
 # Siamese
+[![Build Status](https://circleci.com/gh/dango-mango/siamese.svg?style=svg)](https://app.circleci.com/pipelines/github/dango-mango/siamese)
+[![Docker Version](https://img.shields.io/docker/v/dangomango2/siamese)](https://hub.docker.com/repository/docker/dangomango2/siamese)
+
 Product service for DangoMango skin care app
 
 ## Dev Dependencies
